@@ -1,29 +1,8 @@
-# my-blog
 
-## Project setup
-```
-npm install
-```
+technology：{
+  '路由'：vue-router
+  '自定义指令': Vue.directive,
+  '路由传参' ,
+  
+}
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
