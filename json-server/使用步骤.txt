@@ -1,0 +1,10 @@
+json-server (https://github.com/typicode/json-server)
+
+	1、 安装 (全局安装)
+	npm i json-server -g
+
+	2、 项目中也需要安装
+	npm i json-server -S
+
+	3、 启动 (在 package.json 中修改启动项)
+	json-server --watch db.json
