@@ -58,14 +58,14 @@ export default {
                     console.log(333);
                     this.error.phone = "";
                     // 发送请求 并且触发倒计时函数
-                    this.$axios.post('/apis/posts/sms_send', {
+                    this.$axios.post('/api/posts/sms_send', {
                         mobile : this.phone,
                         key : '5c0f0ec145d988ef90c49a9b4b410032',
                         tpl_id : '190842'
                     })
                     .then (res =>{
                         console.log(res)
-                        
+
                     })
                     this.validateTime();
                 } else {
