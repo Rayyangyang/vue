@@ -18,7 +18,7 @@
             新用户登陆自动注册，表示已同意
             <span @click="userAgreement">《用户服务协议》</span>
         </div>
-        <button @click="login">登陆</button>
+        <button @click="login" :disabled='isclick'>登陆</button>
     </div>
 </template>
 
@@ -41,10 +41,31 @@ export default {
     components: {
         inputGroup
     },
+    computed:{
+        isclick(){
+            if(!this.phone || !this.verifyCode){
+                return true
+            }else{
+                return false;
+            }
+        }
+    },
     methods: {
         login() {
-            console.log(this.phone);
-            this.error.code = "验证码输入错误";
+            // 发送请求
+            this.$axios.post('/api/posts/sms_back', {
+                phone : this.phone,
+                code : this.verifyCode
+            })
+            .then(res => {
+                console.log(res)
+                localStorage.setItem('isLogin', true)
+                this.$router.push('/')
+            })
+            .catch(err => {
+                console.log(err)
+                this.error.code = err.response.data.msg
+            })
         },
         userAgreement() {},
         btnClick() {
@@ -59,7 +80,7 @@ export default {
                     this.error.phone = "";
                     // 发送请求 并且触发倒计时函数
                     this.$axios.post('/api/posts/sms_send', {
-                        mobile : this.phone,
+                        phone : this.phone,
                         key : '5c0f0ec145d988ef90c49a9b4b410032',
                         tpl_id : '190842'
                     })
@@ -126,7 +147,10 @@ export default {
         height: 40px;
         font-size: 16px;
         color: #fff;
-        background: rgb(24, 163, 54);
+        background: #48ca38;
+    }
+    button[disabled] {
+        background-color:#8bda81;
     }
 }
 </style>

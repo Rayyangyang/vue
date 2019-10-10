@@ -20,7 +20,9 @@ const router = new Router({
 })
 
 router.beforeEach((to, from, next) => {
-    const isLogin = localStorage.isLoging ? true : false;
+  console.log(localStorage.isLogin)
+    const isLogin = localStorage.isLogin ? true : false;
+    console.log(isLogin)
     if(to.path == '/login'){
         next()
     }else{
